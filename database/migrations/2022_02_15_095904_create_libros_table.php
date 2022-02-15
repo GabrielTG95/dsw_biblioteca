@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('libros', function (Blueprint $table) {
-            $table->id();
-            $table->string('isbn');
+            $table->string('isbn')->primary();
             $table->string('nombre');
             $table->string('autor');
             $table->string('categoria');
@@ -23,7 +22,7 @@ return new class extends Migration
             $table->tinyInteger('edicion');
             $table->timestamp('fecha_publicacion');
             $table->timestamp('fecha_creacion')->useCurrent();
-            $table->timestamp('fecha_modificacion')->useCurrentOnUpdate()->nullable();
+            $table->timestamp('fecha_modificacion')->useCurrent()->useCurrentOnUpdate()->nullable();
         });
     }
 
