@@ -19,8 +19,7 @@ return new class extends Migration
             $table->string('email')->onupdate('cascade');
             $table->string('password');
             $table->tinyInteger('rol');//0=superuser,1=administrador,2=estudiante
-            $table->timestamp('fecha_creacion')->useCurrent();
-            $table->timestamp('fecha_modificacion')->useCurrent()->useCurrentOnUpdate()->nullable();
+            $table->timestamps();
 
             $table->foreign('rol')->references('rol')->on('roles');
         });

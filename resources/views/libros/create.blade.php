@@ -1,11 +1,10 @@
-<?php
 @extends('layouts.layout')
 
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Editar Ejemplar</h2>
+                <h2>Añadir Libro</h2>
             </div>
         </div>
     </div>
@@ -21,38 +20,29 @@
         </div>
     @endif
 
-    <form action="{{ route('ejemplares.update',$ejemplar->ejemlar_id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('libros.index') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>ISBN:</strong>
-                    <input type="text" name="title" value="{{ $ejemplar->title }}" class="form-control"
-                           placeholder="Ejemplar Title">
+                    <input type="text" name="isbn" class="form-control" placeholder="ISBN" value="{{ old('isbn') }}">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Disponible:</strong>
-                    @if( $ejemplar->disponible == 1)
-                        <input class="form-check-input" type="checkbox" name="prestado">
-                    @else
-                        <input class="form-check-input" type="checkbox" name="prestado" checked>
-                    @endif
+                    <strong>Prestado:</strong>
+                    <input class="form-check-input" type="checkbox" name="prestado">
                 </div>
             </div>
-
-        <!--<div class="col-xs-12 col-sm-12 col-md-12">
+            <!--<div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Image:</strong>
-                    <input type="file" name="image" class="form-control" placeholder="Ejemplar Image">
-                    <img src="/uploads/{{ //$ejemplar->image }}" width="200px">
+                    <input type="file" name="image" class="form-control" placeholder="Post Image">
                 </div>
             </div>-->
-
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Update Ejemplar</button>
+                <button type="submit" class="btn btn-primary">Add Post</button>
             </div>
         </div>
     </form>

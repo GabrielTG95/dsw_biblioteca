@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->tinyInteger('rol')->primary();//0=superuser,1=administrador,2=estudiante
             $table->string('nombre');
-            $table->timestamp('fecha_creacion')->useCurrent();
-            $table->timestamp('fecha_modificacion')->useCurrent()->useCurrentOnUpdate()->nullable();
+            $table->timestamps();
         });
     }
 

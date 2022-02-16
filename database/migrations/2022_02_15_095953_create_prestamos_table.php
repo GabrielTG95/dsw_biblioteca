@@ -20,8 +20,7 @@ return new class extends Migration
             $table->integer('ejemplar');
             $table->timestamp('fecha_prestamo')->useCurrent();
             $table->timestamp('fecha_devolucion')->nullable();
-            $table->timestamp('fecha_creacion')->useCurrent();
-            $table->timestamp('fecha_modificacion')->useCurrent()->useCurrentOnUpdate()->nullable();
+            $table->timestamps();
 
             $table->foreign('usuario')->references('usuario_id')->on('usuarios');
             $table->foreign('ejemplar')->references('ejemplar_id')->on('ejemplares');

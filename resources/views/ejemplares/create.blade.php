@@ -32,7 +32,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Prestado:</strong>
-                    <input type="checkbox" name="prestado">
+                    <input class="form-check-input" type="checkbox" name="prestado">
                 </div>
             </div>
             <!--<div class="col-xs-12 col-sm-12 col-md-12">

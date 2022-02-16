@@ -15,14 +15,13 @@ return new class extends Migration
     {
         Schema::create('libros', function (Blueprint $table) {
             $table->string('isbn')->primary();
-            $table->string('nombre');
+            $table->string('titulo');
             $table->string('autor');
             $table->string('categoria');
             $table->string('editorial');
             $table->tinyInteger('edicion');
             $table->timestamp('fecha_publicacion');
-            $table->timestamp('fecha_creacion')->useCurrent();
-            $table->timestamp('fecha_modificacion')->useCurrent()->useCurrentOnUpdate()->nullable();
+            $table->timestamps();
         });
     }
 

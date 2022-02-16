@@ -1,16 +1,16 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Ejemplar;
-class EjemplarController extends Controller {
+use App\Models\Libro;
+class LibroController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()  {
-        $records = Ejemplar::latest()->paginate(5);
-        return view('ejemplares.index', compact('records'))
+        $records = Libro::latest()->paginate(5);
+        return view('libros.index', compact('records'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     /**
@@ -19,7 +19,7 @@ class EjemplarController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create()   {
-        return view('ejemplares.create');
+        return view('libros.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -30,7 +30,12 @@ class EjemplarController extends Controller {
     public function store(Request $request) {
         $request->validate([
             'isbn' => 'required|min:3|max:255',
-            'disponible' => '',
+            'titulo' => 'required|min:10|max:4096',
+            'autor' => 'required|min:10|max:4096',
+            'categoria' => 'required|min:10|max:4096',
+            'editorial' => 'required|min:10|max:4096',
+            'edicion' => 'required',
+            'fecha_publicacion' => 'required'
         ]);
         $input = $request->all();
         /*if ($image = $request->file('image')) {
@@ -39,38 +44,43 @@ class EjemplarController extends Controller {
             $image->move($imageDestinationPath, $postImage);
             $input['image'] = "$postImage";
         }*/
-        Ejemplar::create($input);
-        return redirect()->route('ejemplares.index')->with('success','Ejemplar created successfully.');
+        Libro::create($input);
+        return redirect()->route('libros.index')->with('success','Libro created successfully.');
     }
     /**
      * Display the specified resource.
      *
-     * @param  \App\Ejemplar  $ejemplar
+     * @param  \App\Libro  $libro
      * @return \Illuminate\Http\Response
      */
-    public function show(Ejemplar $ejemplar) {
-        return view('ejemplares.show',compact('ejemplar'));
+    public function show(Libro $libro) {
+        return view('libros.show',compact('libro'));
     }
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Ejemplar  $ejemplar
+     * @param  \App\Libro  $libro
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ejemplar $ejemplar)  {
-        return view('ejemplares.edit',compact('ejemplar'));
+    public function edit(Libro $libro)  {
+        return view('libros.edit',compact('libro'));
     }
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Ejemplar  $ejemplar
+     * @param  \App\Libro  $libro
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ejemplar $ejemplar) {
+    public function update(Request $request, Libro $libro) {
         $request->validate([
             'isbn' => 'required|min:3|max:255',
-            'disponible' => '',
+            'titulo' => 'required|min:10|max:4096',
+            'autor' => 'required|min:10|max:4096',
+            'categoria' => 'required|min:10|max:4096',
+            'editorial' => 'required|min:10|max:4096',
+            'edicion' => 'required',
+            'fecha_publicacion' => 'required'
         ]);
         $input = $request->all();
         /*if ($image = $request->file('image')) {
@@ -81,18 +91,18 @@ class EjemplarController extends Controller {
         } else {
             unset($input['image']);
         }*/
-        $ejemplar->update($input);
-        return redirect()->route('ejemplares.index')->with('success','Ejemplar updated successfully');
+        $libro->update($input);
+        return redirect()->route('libros.index')->with('success','Libro updated successfully');
     }
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Ejemplar  $ejemplar
+     * @param  \App\Libro  $libro
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ejemplar $ejemplar) {
-        $ejemplar->delete();
-        return redirect()->route('ejemplares.index')
-            ->with('success','Ejemplar deleted successfully');
+    public function destroy(Libro $libro) {
+        $libro->delete();
+        return redirect()->route('libros.index')
+            ->with('success','Libro deleted successfully');
     }
 }

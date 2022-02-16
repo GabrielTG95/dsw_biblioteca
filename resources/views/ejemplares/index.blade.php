@@ -17,7 +17,6 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>ID</th>
             <th>ISBN</th>
             <th>Prestado</th>
             <th>Fecha de Creación</th>
@@ -26,15 +25,14 @@
         @foreach ($records as $record)
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $record->ejemplar_id }}</td>
                 <td>{{ $record->isbn }}</td>
-                <td>{{ $record->prestado }}</td>
+                <td>{{ $record->disponible }}</td>
                 <td>{{ $record->fecha_creacion }}</td>
                 <td>{{ $record->fecha_modificacion }}</td>
                 <td>
-                    <a class="btn btn-sm btn-info" href="{{ route('ejemplares.show',$record->id) }}">Show</a>
-                    <a class="btn btn-sm btn-primary" href="{{ route('ejemplares.edit',$record->id) }}">Edit</a>
-                    <form action="{{ route('ejemplares.destroy',$record->id) }}" method="POST">
+                    <a class="btn btn-sm btn-info" href="{{ route('ejemplares.show',$record->ejemplar_id) }}">Show</a>
+                    <a class="btn btn-sm btn-primary" href="{{ route('ejemplares.edit',$record->iejemplar_d) }}">Edit</a>
+                    <form action="{{ route('ejemplares.destroy',$record->ejemplar_id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>

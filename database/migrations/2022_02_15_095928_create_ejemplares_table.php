@@ -16,11 +16,14 @@ return new class extends Migration
         Schema::create('ejemplares', function (Blueprint $table) {
             $table->integer('ejemplar_id')->autoIncrement();
             $table->string('isbn');
-            $table->boolean('prestado');
-            $table->timestamp('fecha_creacion')->useCurrent();
-            $table->timestamp('fecha_modificacion')->useCurrent()->useCurrentOnUpdate()->nullable();
+            $table->boolean('disponible')->default(1);
+            $table->timestamps();
 
-            $table->foreign('isbn')->references('isbn')->on('libros');
+            $table->foreign('isbn')
+                ->references('isbn')
+                ->on('libros')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
         });
     }
 
