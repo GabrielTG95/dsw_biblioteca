@@ -9,7 +9,7 @@ class Usuario extends Model
 {
     use HasFactory; /* Traits */
 
-    protected $fillable = ['isbn','disponible'];
+    protected $fillable = ['usuario_id','nombre','email','rol'];
 
     public $table = 'usuarios';
 

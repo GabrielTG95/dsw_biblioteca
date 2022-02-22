@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Libro;
+use App\Models\Usuario;
 class LibroController extends Controller {
     /**
      * Display a listing of the resource.
@@ -9,8 +9,8 @@ class LibroController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index()  {
-        $records = Libro::latest()->paginate(5);
-        return view('libros.index', compact('records'))
+        $records = Usuario::latest()->paginate(5);
+        return view('usuarios.index', compact('records'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     /**
@@ -19,7 +19,7 @@ class LibroController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create()   {
-        return view('libros.create');
+        return view('usuarios.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -29,13 +29,8 @@ class LibroController extends Controller {
      */
     public function store(Request $request) {
         $request->validate([
-            'isbn' => 'required|min:3|max:255',
-            'titulo' => 'required|min:10|max:4096',
-            'autor' => 'required|min:10|max:4096',
-            'categoria' => 'required|min:10|max:4096',
-            'editorial' => 'required|min:10|max:4096',
-            'edicion' => 'required',
-            'fecha_publicacion' => 'required'
+            'nombre' => 'required',
+            'email' => 'required'
         ]);
         $input = $request->all();
         /*if ($image = $request->file('image')) {
@@ -44,43 +39,39 @@ class LibroController extends Controller {
             $image->move($imageDestinationPath, $postImage);
             $input['image'] = "$postImage";
         }*/
-        Libro::create($input);
-        return redirect()->route('libros.index')->with('success','Libro created successfully.');
+        Usuario::create($input);
+        return redirect()->route('usuarios.index')->with('success','Usuario created successfully.');
     }
     /**
      * Display the specified resource.
      *
-     * @param  \App\Libro  $libro
+     * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function show(Libro $libro) {
-        return view('libros.show',compact('libro'));
+    public function show(Usuario $usuario) {
+        return view('usuarios.show',compact('usuario'));
     }
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Libro  $libro
+     * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function edit(Libro $libro)  {
-        return view('libros.edit',compact('libro'));
+    public function edit(Usuario $usuario)  {
+        return view('usuarios.edit',compact('usuario'));
     }
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Libro  $libro
+     * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Libro $libro) {
+    public function update(Request $request, Usuario $usuario) {
         $request->validate([
-            'isbn' => 'required|min:3|max:255',
-            'titulo' => 'required|min:10|max:4096',
-            'autor' => 'required|min:10|max:4096',
-            'categoria' => 'required|min:10|max:4096',
-            'editorial' => 'required|min:10|max:4096',
-            'edicion' => 'required',
-            'fecha_publicacion' => 'required'
+            'nombre' => 'required',
+            'email' => 'required',
+            'rol' => 'required'
         ]);
         $input = $request->all();
         /*if ($image = $request->file('image')) {
@@ -91,18 +82,18 @@ class LibroController extends Controller {
         } else {
             unset($input['image']);
         }*/
-        $libro->update($input);
-        return redirect()->route('libros.index')->with('success','Libro updated successfully');
+        $usuario->update($input);
+        return redirect()->route('usuarios.index')->with('success','Usuario updated successfully');
     }
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Libro  $libro
+     * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Libro $libro) {
-        $libro->delete();
-        return redirect()->route('libros.index')
-            ->with('success','Libro deleted successfully');
+    public function destroy(Usuario $usuario) {
+        $usuario->delete();
+        return redirect()->route('usuarios.index')
+            ->with('success','Usuario deleted successfully');
     }
 }
