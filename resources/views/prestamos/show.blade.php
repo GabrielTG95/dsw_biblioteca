@@ -18,38 +18,26 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Titulo:</strong>
+                <strong>Usuario:</strong>
                 {{ $ejemplar->titulo }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Autor:</strong>
+                <strong>Ejemplar:</strong>
                 {{ $ejemplar->autor }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Categoría:</strong>
+                <strong>Fecha del prestamo:</strong>
                 {{ $ejemplar->categoria }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Editorial:</strong>
+                <strong>Fecha de devolución:</strong>
                 {{ $ejemplar->editorial }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Edición:</strong>
-                {{ $ejemplar->edicion }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Fecha de publicación:</strong>
-                {{ $ejemplar->fecha_publicacion }}
             </div>
         </div>
     <!--<div class="col-xs-12 col-sm-12 col-md-12">

@@ -21,25 +21,50 @@
         </div>
     @endif
 
-    <form action="{{ route('ejemplares.update',$ejemplar->ejemlar_id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('ejemplares.update',$libro->isbn) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>ISBN:</strong>
-                    <input type="text" name="title" value="{{ $ejemplar->title }}" class="form-control"
-                           placeholder="Ejemplar Title">
+                    <input type="text" name="isbn" class="form-control" placeholder="ISBN" value="{{ $libro->isbn }}">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Disponible:</strong>
-                    @if( $ejemplar->disponible == 1)
-                        <input class="form-check-input" type="checkbox" name="prestado">
-                    @else
-                        <input class="form-check-input" type="checkbox" name="prestado" checked>
-                    @endif
+                    <strong>Título:</strong>
+                    <input class="form-control" type="text" name="titulo" value="{{ $libro->titulo }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Autor:</strong>
+                    <input class="form-control" type="text" name="autor" value="{{ $libro->autor }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Categoría:</strong>
+                    <input class="form-control" type="text" name="categoria" value="{{ $libro->categoria }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Editorial:</strong>
+                    <input class="form-control" type="text" name="editorial" value="{{ $libro->editorial }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Edición:</strong>
+                    <input class="form-control" type="number" name="edicion" value="{{ $libro->edicion }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Fecha de Publicación:</strong>
+                    <input class="form-control" type="date" name="fecha_publicacion" value="{{ $libro->fecha_creacion }}">
                 </div>
             </div>
 
@@ -52,7 +77,7 @@
             </div>-->
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Update Ejemplar</button>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
             </div>
         </div>
     </form>

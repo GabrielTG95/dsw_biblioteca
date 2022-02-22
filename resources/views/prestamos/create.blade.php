@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Añadir Libro</h2>
+                <h2>Añadir Prestamo</h2>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
         </div>
     @endif
 
-    <form action="{{ route('libros.index') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('prestamos.index') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -31,8 +31,14 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Prestado:</strong>
-                    <input class="form-check-input" type="checkbox" name="prestado">
+                    <strong>Usuario:</strong>
+                    <input type="text" name="isbn" class="form-control" placeholder="ISBN" value="{{ old('isbn') }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Ejemplar:</strong>
+                    <input type="text" name="isbn" class="form-control" placeholder="ISBN" value="{{ old('isbn') }}">
                 </div>
             </div>
             <!--<div class="col-xs-12 col-sm-12 col-md-12">

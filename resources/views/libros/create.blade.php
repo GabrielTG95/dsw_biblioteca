@@ -31,8 +31,38 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Prestado:</strong>
-                    <input class="form-check-input" type="checkbox" name="prestado">
+                    <strong>Título:</strong>
+                    <input class="form-control" type="text" name="titulo" value="{{ old('titulo') }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Autor:</strong>
+                    <input class="form-control" type="text" name="autor" value="{{ old('autor') }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Categoría:</strong>
+                    <input class="form-control" type="text" name="categoria" value="{{ old('categoria') }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Editorial:</strong>
+                    <input class="form-control" type="text" name="editorial" value="{{ old('editorial') }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Edición:</strong>
+                    <input class="form-control" type="number" name="edicion" value="{{ old('edicion') }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Fecha de Publicación:</strong>
+                    <input class="form-control" type="date" name="fecha_publicacion" value="{{ old('fecha_publicacion') }}">
                 </div>
             </div>
             <!--<div class="col-xs-12 col-sm-12 col-md-12">
@@ -42,7 +72,7 @@
                 </div>
             </div>-->
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Add Post</button>
+                <button type="submit" class="btn btn-primary">Añadir</button>
             </div>
         </div>
     </form>

@@ -24,19 +24,34 @@
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ url('/posts') }}">Home
+                <a class="nav-link" href="{{ url('/usuarios') }}">Usuarios
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url('/libros') }}">Libros
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url('/ejemplares') }}">Ejemplares
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url('/prestamos') }}">Prestamos
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
             <!-- Dropdown -->
-            <li class="nav-item dropdown">
+            <!--<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">Post</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{{ url('/posts') }}">List All</a>
                     <a class="dropdown-item" href="{{ url('/posts/create') }}">Add New</a>
                 </div>
-            </li>
+            </li>-->
         </ul>
         <!-- Links -->
     </div>
