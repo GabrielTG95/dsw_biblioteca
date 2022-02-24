@@ -62,7 +62,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Fecha de Publicación:</strong>
-                    <input class="form-control" type="date" name="fecha_publicacion" value="{{ old('fecha_publicacion') }}">
+                    <input class="form-control" type="number" name="fecha_publicacion" min="1700" max="2022" step="1" value="{{ old('fecha_publicacion') }}">
                 </div>
             </div>
             <!--<div class="col-xs-12 col-sm-12 col-md-12">

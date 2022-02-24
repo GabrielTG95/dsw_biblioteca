@@ -20,31 +20,40 @@
         </div>
     @endif
 
-    <form action="{{ route('usuarios.index') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('users.index') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Nombre:</strong>
-                    <input type="text" name="nombre" class="form-control" placeholder="Nombre" value="{{ old('nombre') }}">
+                    <input type="text" name="name" class="form-control" placeholder="Nombre" value="{{ old('name') }}">
                 </div>
             </div>
+
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Email:</strong>
                     <input type="email" name="email" class="form-control" placeholder="email@gmail.com" value="{{ old('email') }}">
                 </div>
             </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Contraseña:</strong>
+                    <input type="password" name="password" class="form-control" value="">
+                </div>
+            </div>
+
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Rol:</strong>
-                    <select class="selectpicker form-control" name="rol" id="rol">
-                        <option value="0">SuperUser</option>
-                        <option value="1">Administrador</option>
-                        <option value="2">Alumno</option>
+                    <select class="form-control" name="rol" id="rol">
+                        <option value="0">Administrador</option>
+                        <option value="1">Alumno</option>
                     </select>
                 </div>
             </div>
+
             <!--<div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Image:</strong>

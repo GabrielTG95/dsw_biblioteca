@@ -29,9 +29,8 @@ class PrestamoController extends Controller {
      */
     public function store(Request $request) {
         $request->validate([
-            'isbn' => 'required|min:3|max:255',
-            'usuario' => 'required',
-            'ejemplar' => 'required',
+            'libro_id' => 'required',
+            'usuario' => 'required'
         ]);
         $input = $request->all();
         /*if ($image = $request->file('image')) {
@@ -70,10 +69,8 @@ class PrestamoController extends Controller {
      */
     public function update(Request $request, Prestamo $prestamo) {
         $request->validate([
-            'prestamo_id' => 'required|min:3|max:255',
-            'isbn' => 'required',
+            'libro_id' => 'required|min:3|max:255',
             'usuario' => 'required',
-            'ejemplar' => 'required',
             'fecha_prestamo' => 'required',
             'fecha_devolucion' => 'required'
         ]);

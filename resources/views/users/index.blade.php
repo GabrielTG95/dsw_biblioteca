@@ -8,7 +8,7 @@
             </div>
         </div>
     </div>
-    <a href="{{route('usuarios.create')}}" class="btn btn-success">{{__('Añadir Usuario')}}</a>
+    <a href="{{route('users.create')}}" class="btn btn-success">{{__('Añadir Usuario')}}</a>
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
@@ -18,23 +18,29 @@
     <table class="table table-bordered">
         <tr>
             <th>ID</th>
-            <th>Usuario</th>
+            <th>Nombre</th>
             <th>Email</th>
+            <th>Rol</th>
             <th>Fecha de creación</th>
         </tr>
         @foreach ($records as $record)
             <tr>
-                <td>{{ $record->usuario_id }}</td>
-                <td>{{ $record->nombre }}</td>
+                <td>{{ $record->id }}</td>
+                <td>{{ $record->name }}</td>
                 <td>{{ $record->email }}</td>
+                @if($record->rol == 0)
+                    <td>Administrador</td>
+                @else
+                    <td>Alumno</td>
+                @endif
                 <td>{{ $record->created_at }}</td>
                 <td>
-                    <a class="btn btn-sm btn-info" href="{{ route('usuarios.show',$record->usuario_id) }}">Show</a>
-                    <a class="btn btn-sm btn-primary" href="{{ route('usuarios.edit',$record->usuario_id) }}">Edit</a>
-                    <form action="{{ route('usuarios.destroy',$record->usuario_id) }}" method="POST">
+                    <a class="btn btn-sm btn-info" href="{{ route('users.show',$record->id) }}">Ver Más</a>
+                    <a class="btn btn-sm btn-primary" href="{{ route('users.edit',$record->id) }}">Editar</a>
+                    <form action="{{ route('users.destroy',$record->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                     </form>
                 </td>
             </tr>

@@ -1,4 +1,3 @@
-<?php
 @extends('layouts.layout')
 
 @section('content')
@@ -21,15 +20,13 @@
         </div>
     @endif
 
-    <form action="{{ route('prestamos.update',$prestamo->prestamo_id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('prestamos.update',$prestamo->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>ISBN:</strong>
-                    <input type="text" name="title" value="{{ $prestamo->isbn }}" class="form-control"
-                           placeholder="ISBB">
+                    <strong>Libro: {{ $prestamo->libro_id }}</strong>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -37,12 +34,6 @@
                     <strong>Usuario:</strong>
                     <input type="text" name="title" value="{{ $prestamo->usuario }}" class="form-control"
                            placeholder="Usuario">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Ejemplar:</strong>
-                    <input type="number" name="title" value="{{ $prestamo->ejemplar }}" class="form-control">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -57,14 +48,6 @@
                     <input type="date" name="title" value="{{ $prestamo->fecha_devolucion }}" class="form-control">
                 </div>
             </div>
-
-        <!--<div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Image:</strong>
-                    <input type="file" name="image" class="form-control" placeholder="Ejemplar Image">
-                    <img src="/uploads/{{ //$ejemplar->image }}" width="200px">
-                </div>
-            </div>-->
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Update Ejemplar</button>

@@ -1,11 +1,10 @@
-<?php
 @extends('layouts.layout')
 
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Editar Ejemplar</h2>
+                <h2>Editar Libro</h2>
             </div>
         </div>
     </div>
@@ -21,7 +20,7 @@
         </div>
     @endif
 
-    <form action="{{ route('ejemplares.update',$libro->isbn) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('libros.update',$libro->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="row">
@@ -64,17 +63,19 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Fecha de Publicación:</strong>
-                    <input class="form-control" type="date" name="fecha_publicacion" value="{{ $libro->fecha_creacion }}">
+                    <input class="form-control" type="number" name="fecha_publicacion" min="1700" max="2022" step="1" value="{{ $libro->fecha_publicacion }}">
                 </div>
             </div>
-
-        <!--<div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Image:</strong>
-                    <input type="file" name="image" class="form-control" placeholder="Ejemplar Image">
-                    <img src="/uploads/{{ //$ejemplar->image }}" width="200px">
+                    <strong>Disponible:</strong>
+                    @if($libro->disponible == 0)
+                        <input class="form-check-control" type="checkbox" name="disponible" checked>
+                    @else
+                        <input class="form-check-control" type="checkbox" name="disponible" checked>
+                    @endif
                 </div>
-            </div>-->
+            </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Actualizar</button>

@@ -21,7 +21,7 @@
     </style>
 </head>
 <body class="antialiased">
-<div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+<div class="relative flex items-top justify-center min-h-screen bg-gray-100 light:bg-gray-900 sm:items-center py-4 sm:pt-0">
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
@@ -38,7 +38,7 @@
 
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
 
-        <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg text-center">
+        <div class="mt-8 bg-white light:bg-gray-800 overflow-hidden shadow sm:rounded-lg text-center">
             <img class="w-75 d-block mx-auto" src="https://i1.wp.com/www3.gobiernodecanarias.org/medusa/edublog/ieselrincon/wp-content/uploads/sites/137/2019/10/cropped-sin-titulo-4.png?fit=512%2C512&ssl=1" alt="">
             <h1>Bienvenid@ a la biblioteca de IES El Rincón</h1>
             <a href="{{ url('/libros') }}">Acceder</a>

@@ -1,4 +1,3 @@
-<?php
 @extends('layouts.layout')
 
 @section('content')
@@ -12,39 +11,31 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>ISBN:</strong>
-                {{ $ejemplar->isbn }}
+                <strong>Libro:</strong>
+                {{ $prestamo->libro_id }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Usuario:</strong>
-                {{ $ejemplar->titulo }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Ejemplar:</strong>
-                {{ $ejemplar->autor }}
+                {{ $prestamo->usuario }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Fecha del prestamo:</strong>
-                {{ $ejemplar->categoria }}
+                {{ $prestamo->fecha_prestamo }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Fecha de devolución:</strong>
-                {{ $ejemplar->editorial }}
+                @if($prestamo->fecha_devolucion == null)
+                    Aún no se ha devuelto
+                @else
+                    {{ $prestamo->fecha_devolucion }}
+                @endif
             </div>
         </div>
-    <!--<div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Image:</strong>
-                <img src="/uploads/{{ //$post->image }}" width="300px">
-            </div>
-        </div>-->
     </div>
 @endsection

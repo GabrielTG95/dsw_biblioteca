@@ -15,17 +15,12 @@ return new class extends Migration
     {
         Schema::create('prestamos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('libro_id');
-            $table->unsignedBigInteger('usuario');
-            $table->unsignedBigInteger('ejemplar');
+            $table->bigInteger('libro_id');
+            $table->string('usuario');
             $table->timestamp('fecha_prestamo')->useCurrent();
             $table->timestamp('fecha_devolucion')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
-
-            $table->foreign('libro_id')->references('id')->on('libros');
-            $table->foreign('usuario')->references('id')->on('usuarios');
-            $table->foreign('ejemplar')->references('id')->on('ejemplares');
         });
     }
 

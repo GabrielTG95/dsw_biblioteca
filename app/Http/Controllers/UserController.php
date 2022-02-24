@@ -1,16 +1,16 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Ejemplar;
-class EjemplarController extends Controller {
+use App\Models\User;
+class UserController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()  {
-        $records = Ejemplar::latest()->paginate(5);
-        return view('ejemplares.index', compact('records'))
+        $records = User::latest()->paginate(5);
+        return view('users.index', compact('records'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     /**
@@ -19,7 +19,7 @@ class EjemplarController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create()   {
-        return view('ejemplares.create');
+        return view('users.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -29,8 +29,10 @@ class EjemplarController extends Controller {
      */
     public function store(Request $request) {
         $request->validate([
-            'isbn' => 'required|min:3|max:255',
-            'disponible' => '',
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'rol' => 'required'
         ]);
         $input = $request->all();
         /*if ($image = $request->file('image')) {
@@ -39,39 +41,46 @@ class EjemplarController extends Controller {
             $image->move($imageDestinationPath, $postImage);
             $input['image'] = "$postImage";
         }*/
-        Ejemplar::create($input);
-        return redirect()->route('ejemplares.index')->with('success','Ejemplar created successfully.');
+        User::create($input);
+        return redirect()->route('users.index')->with('success','User created successfully.');
     }
     /**
      * Display the specified resource.
      *
-     * @param  \App\Ejemplar  $ejemplar
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Ejemplar $ejemplar) {
-        return view('ejemplares.show',compact('ejemplar'));
+    public function show(User $user) {
+        return view('users.show',compact('user'));
     }
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Ejemplar  $ejemplar
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ejemplar $ejemplar)  {
-        return view('ejemplares.edit',compact('ejemplar'));
+    public function edit(User $user)  {
+        return view('users.edit',compact('user'));
     }
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Ejemplar  $ejemplar
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ejemplar $ejemplar) {
+    public function update(Request $request, User $user) {
         $request->validate([
-            'isbn' => 'required|min:3|max:255',
-            'disponible' => '',
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'rol' => 'required'
         ]);
+        if ($request['disponible'] == 'on'){
+            $request['disponible'] = 0;
+        }else{
+            $request['disponible'] = 1;
+        }
         $input = $request->all();
         /*if ($image = $request->file('image')) {
             $imageDestinationPath = 'uploads/';
@@ -81,18 +90,18 @@ class EjemplarController extends Controller {
         } else {
             unset($input['image']);
         }*/
-        $ejemplar->update($input);
-        return redirect()->route('ejemplares.index')->with('success','Ejemplar updated successfully');
+        $user->update($input);
+        return redirect()->route('users.index')->with('success','User updated successfully');
     }
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Ejemplar  $ejemplar
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ejemplar $ejemplar) {
-        $ejemplar->delete();
-        return redirect()->route('ejemplares.index')
-            ->with('success','Ejemplar deleted successfully');
+    public function destroy(User $user) {
+        $user->delete();
+        return redirect()->route('users.index')
+            ->with('success','User deleted successfully');
     }
 }

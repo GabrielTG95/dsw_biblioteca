@@ -29,11 +29,11 @@ class LibroController extends Controller {
      */
     public function store(Request $request) {
         $request->validate([
-            'isbn' => 'required|min:3|max:255',
-            'titulo' => 'required|min:10|max:4096',
-            'autor' => 'required|min:10|max:4096',
-            'categoria' => 'required|min:10|max:4096',
-            'editorial' => 'required|min:10|max:4096',
+            'isbn' => 'required|min:10|max:17',
+            'titulo' => 'required|min:10|max:100',
+            'autor' => 'required|min:10|max:100',
+            'categoria' => 'required|min:5|max:100',
+            'editorial' => 'required|min:10|max:100',
             'edicion' => 'required',
             'fecha_publicacion' => 'required'
         ]);
@@ -74,14 +74,20 @@ class LibroController extends Controller {
      */
     public function update(Request $request, Libro $libro) {
         $request->validate([
-            'isbn' => 'required|min:3|max:255',
-            'titulo' => 'required|min:10|max:4096',
-            'autor' => 'required|min:10|max:4096',
-            'categoria' => 'required|min:10|max:4096',
-            'editorial' => 'required|min:10|max:4096',
+            'isbn' => 'required|min:10|max:17',
+            'titulo' => 'required|min:5|max:100',
+            'autor' => 'required|min:5|max:100',
+            'categoria' => 'required|min:5|max:100',
+            'editorial' => 'required|min:5|max:100',
             'edicion' => 'required',
-            'fecha_publicacion' => 'required'
+            'fecha_publicacion' => 'required',
+            'disponible' => ''
         ]);
+        if ($request['disponible'] == 'on'){
+            $request['disponible'] = 0;
+        }else{
+            $request['disponible'] = 1;
+        }
         $input = $request->all();
         /*if ($image = $request->file('image')) {
             $imageDestinationPath = 'uploads/';

@@ -24,6 +24,7 @@
             <th>Editorial</th>
             <th>Edición</th>
             <th>Fecha de publicación</th>
+            <th>Disponibilidad</th>
         </tr>
         @foreach ($records as $record)
             <tr>
@@ -34,6 +35,11 @@
                 <td>{{ $record->editorial }}</td>
                 <td>{{ $record->edicion }}</td>
                 <td>{{ $record->fecha_publicacion }}</td>
+                @if($record->disponible == 0)
+                    <td>Disponible</td>
+                @else
+                    <td>No Disponible</td>
+                @endif
                 <td>
                     <a class="btn btn-sm btn-info" href="{{ route('libros.show',$record->id) }}">Show</a>
                     <a class="btn btn-sm btn-primary" href="{{ route('libros.edit',$record->id) }}">Edit</a>

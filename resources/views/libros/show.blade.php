@@ -51,5 +51,15 @@
                 {{ $libro->fecha_publicacion }}
             </div>
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Disponibilidad:</strong>
+                @if($libro->disponible == 0)
+                    Disponible
+                @else
+                    No Disponible
+                @endif
+            </div>
+        </div>
     </div>
 @endsection

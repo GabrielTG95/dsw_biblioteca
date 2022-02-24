@@ -25,20 +25,19 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>ISBN:</strong>
-                    <input type="text" name="isbn" class="form-control" placeholder="ISBN" value="{{ old('isbn') }}">
+                    <strong>Libros:</strong>
+                    <select class="form-control" name="libro_id" id="libro_id">
+                        <option value="1">Libro 1</option>
+                        <option value="2">Libro 2</option>
+                        <option value="3">Libro 3</option>
+                        <option value="4">Libro 4</option>
+                    </select>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Usuario:</strong>
-                    <input type="text" name="isbn" class="form-control" placeholder="ISBN" value="{{ old('isbn') }}">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Ejemplar:</strong>
-                    <input type="text" name="isbn" class="form-control" placeholder="ISBN" value="{{ old('isbn') }}">
+                    <input type="text" name="usuario" class="form-control" placeholder="Usuario" value="{{ old('usuario') }}">
                 </div>
             </div>
             <!--<div class="col-xs-12 col-sm-12 col-md-12">
@@ -48,7 +47,7 @@
                 </div>
             </div>-->
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Add Post</button>
+                <button type="submit" class="btn btn-primary">Añadir</button>
             </div>
         </div>
     </form>

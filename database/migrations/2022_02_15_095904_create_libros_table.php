@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('categoria');
             $table->string('editorial');
             $table->tinyInteger('edicion');
-            $table->timestamp('fecha_publicacion');
+            $table->year('fecha_publicacion');
+            $table->boolean('disponible')->default(0);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
