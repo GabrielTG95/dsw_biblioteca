@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Editar Ejemplar</h2>
+                <h2>Editar Usuario</h2>
             </div>
         </div>
     </div>
@@ -21,25 +21,22 @@
         </div>
     @endif
 
-    <form action="{{ route('ejemplares.update',$ejemplar->ejemlar_id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('usuarios.update',$usuario->usuario_id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>ISBN:</strong>
-                    <input type="text" name="title" value="{{ $ejemplar->title }}" class="form-control"
-                           placeholder="Ejemplar Title">
+                    <strong>Nombre:</strong>
+                    <input type="text" name="nombre" value="{{ $usuario->nombre }}" class="form-control"
+                           placeholder="Nombre">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Disponible:</strong>
-                    @if( $ejemplar->disponible == 1)
-                        <input class="form-check-input" type="checkbox" name="prestado">
-                    @else
-                        <input class="form-check-input" type="checkbox" name="prestado" checked>
-                    @endif
+                    <strong>Email:</strong>
+                    <input type="email" name="email" value="{{ $usuario->email }}" class="form-control"
+                           placeholder="email@gmail.com">
                 </div>
             </div>
 
@@ -52,7 +49,7 @@
             </div>-->
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Update Ejemplar</button>
+                <button type="submit" class="btn btn-primary">Editar</button>
             </div>
         </div>
     </form>

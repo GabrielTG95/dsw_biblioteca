@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Añadir Libro</h2>
+                <h2>Añadir Usuario</h2>
             </div>
         </div>
     </div>
@@ -20,19 +20,29 @@
         </div>
     @endif
 
-    <form action="{{ route('libros.index') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('usuarios.index') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>ISBN:</strong>
-                    <input type="text" name="isbn" class="form-control" placeholder="ISBN" value="{{ old('isbn') }}">
+                    <strong>Nombre:</strong>
+                    <input type="text" name="nombre" class="form-control" placeholder="Nombre" value="{{ old('nombre') }}">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Prestado:</strong>
-                    <input class="form-check-input" type="checkbox" name="prestado">
+                    <strong>Email:</strong>
+                    <input type="email" name="email" class="form-control" placeholder="email@gmail.com" value="{{ old('email') }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Rol:</strong>
+                    <select class="selectpicker form-control" name="rol" id="rol">
+                        <option value="0">SuperUser</option>
+                        <option value="1">Administrador</option>
+                        <option value="2">Alumno</option>
+                    </select>
                 </div>
             </div>
             <!--<div class="col-xs-12 col-sm-12 col-md-12">
@@ -42,7 +52,7 @@
                 </div>
             </div>-->
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Add Post</button>
+                <button type="submit" class="btn btn-primary">Añadir</button>
             </div>
         </div>
     </form>

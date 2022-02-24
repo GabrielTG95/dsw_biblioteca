@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
 });
 
 Route::resource('/ejemplares',\App\Http\Controllers\EjemplarController::class);
 Route::resource('/libros',\App\Http\Controllers\LibroController::class);
+Route::resource('/prestamos',\App\Http\Controllers\PrestamoController::class);
+Route::resource('/usuarios',\App\Http\Controllers\UsuarioController::class);

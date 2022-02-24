@@ -14,14 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('libros', function (Blueprint $table) {
-            $table->string('isbn')->primary();
+            $table->id();
+            $table->string('isbn');
             $table->string('titulo');
             $table->string('autor');
             $table->string('categoria');
             $table->string('editorial');
             $table->tinyInteger('edicion');
             $table->timestamp('fecha_publicacion');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

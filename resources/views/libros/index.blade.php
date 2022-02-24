@@ -27,7 +27,6 @@
         </tr>
         @foreach ($records as $record)
             <tr>
-                <td>{{ ++$i }}</td>
                 <td>{{ $record->isbn }}</td>
                 <td>{{ $record->titulo }}</td>
                 <td>{{ $record->autor }}</td>
@@ -36,9 +35,9 @@
                 <td>{{ $record->edicion }}</td>
                 <td>{{ $record->fecha_publicacion }}</td>
                 <td>
-                    <a class="btn btn-sm btn-info" href="{{ route('libros.show',$record->isbn) }}">Show</a>
-                    <a class="btn btn-sm btn-primary" href="{{ route('libros.edit',$record->isbn) }}">Edit</a>
-                    <form action="{{ route('libros.destroy',$record->isbn) }}" method="POST">
+                    <a class="btn btn-sm btn-info" href="{{ route('libros.show',$record->id) }}">Show</a>
+                    <a class="btn btn-sm btn-primary" href="{{ route('libros.edit',$record->id) }}">Edit</a>
+                    <form action="{{ route('libros.destroy',$record->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>

@@ -14,16 +14,18 @@ return new class extends Migration
     public function up()
     {
         Schema::create('prestamos', function (Blueprint $table) {
-            $table->integer('prestamo_id')->autoIncrement();
-            $table->string('isbn');
-            $table->integer('usuario');
-            $table->integer('ejemplar');
+            $table->id();
+            $table->unsignedBigInteger('libro_id');
+            $table->unsignedBigInteger('usuario');
+            $table->unsignedBigInteger('ejemplar');
             $table->timestamp('fecha_prestamo')->useCurrent();
             $table->timestamp('fecha_devolucion')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 
-            $table->foreign('usuario')->references('usuario_id')->on('usuarios');
-            $table->foreign('ejemplar')->references('ejemplar_id')->on('ejemplares');
+            $table->foreign('libro_id')->references('id')->on('libros');
+            $table->foreign('usuario')->references('id')->on('usuarios');
+            $table->foreign('ejemplar')->references('id')->on('ejemplares');
         });
     }
 

@@ -14,13 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ejemplares', function (Blueprint $table) {
-            $table->integer('ejemplar_id')->autoIncrement();
-            $table->string('isbn');
+            $table->id();
+            $table->unsignedBigInteger('libro_id');
             $table->boolean('disponible')->default(1);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 
-            $table->foreign('isbn')
-                ->references('isbn')
+            $table->foreign('libro_id')
+                ->references('id')
                 ->on('libros')
                 ->cascadeOnUpdate()
                 ->restrictOnDelete();

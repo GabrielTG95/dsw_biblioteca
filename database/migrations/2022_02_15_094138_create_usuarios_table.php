@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('usuarios', function (Blueprint $table) {
-            $table->integer('usuario_id')->autoIncrement();
+            $table->id();
             $table->string('nombre');
             $table->string('email')->onupdate('cascade');
             $table->string('password');
             $table->tinyInteger('rol');//0=superuser,1=administrador,2=estudiante
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 
             $table->foreign('rol')->references('rol')->on('roles');
         });

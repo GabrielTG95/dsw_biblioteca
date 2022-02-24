@@ -22,11 +22,5 @@
                 {{ $ejemplar->disponible }}
             </div>
         </div>
-    <!--<div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Image:</strong>
-                <img src="/uploads/{{ //$post->image }}" width="300px">
-            </div>
-        </div>-->
     </div>
 @endsection

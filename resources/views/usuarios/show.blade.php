@@ -5,51 +5,33 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Mostrar Libro</h2>
+                <h2>Mostrar Usuario</h2>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>ISBN:</strong>
-                {{ $ejemplar->isbn }}
+                <strong>ID:</strong>
+                {{ $ejemplar->usuario_id }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Titulo:</strong>
-                {{ $ejemplar->titulo }}
+                <strong>Nombre:</strong>
+                {{ $ejemplar->nombre }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Autor:</strong>
-                {{ $ejemplar->autor }}
+                <strong>Email:</strong>
+                {{ $ejemplar->email }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Categoría:</strong>
-                {{ $ejemplar->categoria }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Editorial:</strong>
-                {{ $ejemplar->editorial }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Edición:</strong>
-                {{ $ejemplar->edicion }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Fecha de publicación:</strong>
-                {{ $ejemplar->fecha_publicacion }}
+                <strong>Fecha de creacion:</strong>
+                {{ $ejemplar->created_at }}
             </div>
         </div>
     <!--<div class="col-xs-12 col-sm-12 col-md-12">

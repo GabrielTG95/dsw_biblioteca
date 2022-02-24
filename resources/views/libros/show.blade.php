@@ -1,4 +1,3 @@
-<?php
 @extends('layouts.layout')
 
 @section('content')
@@ -13,50 +12,44 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>ISBN:</strong>
-                {{ $ejemplar->isbn }}
+                {{ $libro->isbn }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Titulo:</strong>
-                {{ $ejemplar->titulo }}
+                {{ $libro->titulo }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Autor:</strong>
-                {{ $ejemplar->autor }}
+                {{ $libro->autor }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Categoría:</strong>
-                {{ $ejemplar->categoria }}
+                {{ $libro->categoria }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Editorial:</strong>
-                {{ $ejemplar->editorial }}
+                {{ $libro->editorial }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Edición:</strong>
-                {{ $ejemplar->edicion }}
+                {{ $libro->edicion }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Fecha de publicación:</strong>
-                {{ $ejemplar->fecha_publicacion }}
+                {{ $libro->fecha_publicacion }}
             </div>
         </div>
-    <!--<div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Image:</strong>
-                <img src="/uploads/{{ //$post->image }}" width="300px">
-            </div>
-        </div>-->
     </div>
 @endsection
