@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Prestamo;
 use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Libro;
 class PrestamoController extends Controller {
     /**
      * Display a listing of the resource.
@@ -20,7 +22,11 @@ class PrestamoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create()   {
-        return view('prestamos.create');
+        //$users = User::where('name','like','usuario')->get();
+        $users = User::get();
+        //dd($users);//Crea un punto de ruptura e imprime por pantalla la variable
+        $libros = Libro::get();
+        return view('prestamos.create',compact('users','libros'));
     }
     /**
      * Store a newly created resource in storage.
@@ -72,7 +78,7 @@ class PrestamoController extends Controller {
         $request->validate([
             'usuario' => 'required',
             'fecha_prestamo' => 'required',
-            'fecha_devolucion' => 'required'
+            'fecha_devolucion' => ''
         ]);
         $input = $request->all();
         /*if ($image = $request->file('image')) {

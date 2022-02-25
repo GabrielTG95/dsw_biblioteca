@@ -73,7 +73,6 @@ class UserController extends Controller {
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
             'rol' => 'required'
         ]);
         if ($request['disponible'] == 'on'){

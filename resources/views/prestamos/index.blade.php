@@ -25,7 +25,7 @@
             <th>Fecha de devolución</th>
         </tr>
         @foreach ($records as $record)
-            @if(Auth::user()->id == $record->usuario)
+            @if(Auth::user()->rol == 0 || Auth::user()->id == $record->usuario)
             <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $record->libro_id }}</td>

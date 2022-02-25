@@ -1,10 +1,11 @@
 @extends('layouts.layout')
 
 @section('content')
+    <a class="btn btn-primary" href="{{url('/users')}}">Volver</a>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Usuario <b>{{ $user->id }}</b></h2>
+                <h2><b>{{ $user->name }}</b></h2>
             </div>
         </div>
     </div>
@@ -18,7 +19,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Nombre:</strong>
-                {{ $user->nombre }}
+                {{ $user->name }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -41,6 +42,12 @@
             <div class="form-group">
                 <strong>Fecha de creación:</strong>
                 {{ $user->created_at }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Última modificación:</strong>
+                {{ $user->updated_at }}
             </div>
         </div>
     </div>

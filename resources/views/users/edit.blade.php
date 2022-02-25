@@ -42,13 +42,6 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Contraseña:</strong>
-                    <input type="password" name="password" class="form-control" value="">
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
                     <strong>Rol:</strong>
                     <select class="form-control" name="rol" id="rol">
                         @if($user->rol == 0)

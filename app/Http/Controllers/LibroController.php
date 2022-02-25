@@ -18,7 +18,7 @@ class LibroController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()   {
+    public function create(Request $request)   {
         return view('libros.create');
     }
     /**
@@ -35,15 +35,16 @@ class LibroController extends Controller {
             'categoria' => 'required|min:5|max:100',
             'editorial' => 'required|min:10|max:100',
             'edicion' => 'required',
-            'fecha_publicacion' => 'required'
+            'fecha_publicacion' => 'required',
+            'image' => 'required'
         ]);
         $input = $request->all();
-        /*if ($image = $request->file('image')) {
+        if ($image = $request->file('image')) {
             $imageDestinationPath = 'uploads/';
             $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($imageDestinationPath, $postImage);
             $input['image'] = "$postImage";
-        }*/
+        }
         Libro::create($input);
         return redirect()->route('libros.index')->with('success','Libro created successfully.');
     }
@@ -89,14 +90,14 @@ class LibroController extends Controller {
             $request['disponible'] = 1;
         }
         $input = $request->all();
-        /*if ($image = $request->file('image')) {
+        if ($image = $request->file('image')) {
             $imageDestinationPath = 'uploads/';
             $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($imageDestinationPath, $postImage);
             $input['image'] = "$postImage";
         } else {
             unset($input['image']);
-        }*/
+        }
         $libro->update($input);
         return redirect()->route('libros.index')->with('success','Libro updated successfully');
     }

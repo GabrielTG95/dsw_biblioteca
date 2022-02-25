@@ -61,5 +61,12 @@
                 @endif
             </div>
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Portada:</strong>
+                <img class="w-25" src="{{asset('uploads/').'/'.$libro->image}}" alt="">
+                {{ $libro->fecha_publicacion }}
+            </div>
+        </div>
     </div>
 @endsection

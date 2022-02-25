@@ -35,12 +35,12 @@
                 @endif
                 <td>{{ $record->created_at }}</td>
                 <td>
-                    <a class="btn btn-sm btn-info" href="{{ route('users.show',$record->id) }}">Ver Más</a>
-                    <a class="btn btn-sm btn-primary" href="{{ route('users.edit',$record->id) }}">Editar</a>
-                    <form action="{{ route('users.destroy',$record->id) }}" method="POST">
+                    <a class="btn btn-sm btn-info d-block mb-1" href="{{ route('users.show',$record->id) }}">Ver Más</a>
+                    <a class="btn btn-sm btn-primary d-block mb-1" href="{{ route('users.edit',$record->id) }}">Editar</a>
+                    <form class="w-100" action="{{ route('users.destroy',$record->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                        <button type="submit" class="btn btn-sm btn-danger w-100 m-0">Eliminar</button>
                     </form>
                 </td>
             </tr>

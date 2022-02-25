@@ -19,7 +19,6 @@
             </ul>
         </div>
     @endif
-
     <form action="{{ route('prestamos.index') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
@@ -27,17 +26,20 @@
                 <div class="form-group">
                     <strong>Libros:</strong>
                     <select class="form-control" name="libro_id" id="libro_id">
-                        <option value="1">Libro 1</option>
-                        <option value="2">Libro 2</option>
-                        <option value="3">Libro 3</option>
-                        <option value="4">Libro 4</option>
+                        @foreach ($libros->all() as $libro)
+                            <option value="{{ $libro->id }}">{{ $libro->titulo }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Usuario:</strong>
-                    <input type="text" name="usuario" class="form-control" placeholder="Usuario" value="{{ old('usuario') }}">
+                    <select class="form-control" name="usuario" id="libro_id">
+                        @foreach ($users->all() as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <!--<div class="col-xs-12 col-sm-12 col-md-12">
