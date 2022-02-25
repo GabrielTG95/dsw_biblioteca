@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('isbn');
             $table->string('titulo');
             $table->string('autor');
-            $table->string('categoria');
+            $table->tinyInteger('categoria');
             $table->string('editorial');
             $table->tinyInteger('edicion');
             $table->year('fecha_publicacion');
-            $table->string('portada');
+            $table->string('portada')->nullable();
             $table->boolean('disponible')->default(0);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

@@ -42,7 +42,7 @@
         <div class="mt-8 bg-white light:bg-gray-800 overflow-hidden shadow sm:rounded-lg text-center">
             <img class="w-75 d-block mx-auto" src="https://i1.wp.com/www3.gobiernodecanarias.org/medusa/edublog/ieselrincon/wp-content/uploads/sites/137/2019/10/cropped-sin-titulo-4.png?fit=512%2C512&ssl=1" alt="">
             <h1>Bienvenid@ a la biblioteca de IES El Rincón</h1>
-            <a href="{{ url('/libros') }}">Acceder</a>
+            <a class="btn btn-info" href="{{'/libros'}}">Acceder</a>
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Libro;
+use App\Models\Categoria;
 class LibroController extends Controller {
     /**
      * Display a listing of the resource.
@@ -9,8 +10,9 @@ class LibroController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index()  {
-        $records = Libro::latest()->paginate(5);
-        return view('libros.index', compact('records'))
+        $records = Libro::latest()->paginate(9);
+        $categorias = Categoria::get();
+        return view('libros.index', compact('records','categorias'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     /**
@@ -19,7 +21,8 @@ class LibroController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)   {
-        return view('libros.create');
+        $categorias = Categoria::get();
+        return view('libros.create',compact('categorias'));
     }
     /**
      * Store a newly created resource in storage.
@@ -29,24 +32,24 @@ class LibroController extends Controller {
      */
     public function store(Request $request) {
         $request->validate([
-            'isbn' => 'required|min:10|max:17',
-            'titulo' => 'required|min:10|max:100',
-            'autor' => 'required|min:10|max:100',
-            'categoria' => 'required|min:5|max:100',
-            'editorial' => 'required|min:10|max:100',
+            'isbn' => 'required',
+            'titulo' => 'required',
+            'autor' => 'required',
+            'categoria' => 'required',
+            'editorial' => 'required',
             'edicion' => 'required',
             'fecha_publicacion' => 'required',
-            'image' => 'required'
+            'portada' => 'required'
         ]);
         $input = $request->all();
-        if ($image = $request->file('image')) {
+        if ($image = $request->file('portada')) {
             $imageDestinationPath = 'uploads/';
             $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($imageDestinationPath, $postImage);
-            $input['image'] = "$postImage";
+            $input['portada'] = "$postImage";
         }
         Libro::create($input);
-        return redirect()->route('libros.index')->with('success','Libro created successfully.');
+        return redirect()->route('libros.index')->with('success','Libro creado con éxito.');
     }
     /**
      * Display the specified resource.
@@ -55,7 +58,8 @@ class LibroController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show(Libro $libro) {
-        return view('libros.show',compact('libro'));
+        $categorias = Categoria::get();
+        return view('libros.show',compact('libro','categorias'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -64,7 +68,8 @@ class LibroController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit(Libro $libro)  {
-        return view('libros.edit',compact('libro'));
+        $categorias = Categoria::get();
+        return view('libros.edit',compact('libro','categorias'));
     }
     /**
      * Update the specified resource in storage.
@@ -75,14 +80,15 @@ class LibroController extends Controller {
      */
     public function update(Request $request, Libro $libro) {
         $request->validate([
-            'isbn' => 'required|min:10|max:17',
-            'titulo' => 'required|min:5|max:100',
-            'autor' => 'required|min:5|max:100',
-            'categoria' => 'required|min:5|max:100',
-            'editorial' => 'required|min:5|max:100',
+            'isbn' => 'required',
+            'titulo' => 'required',
+            'autor' => 'required',
+            'categoria' => 'required',
+            'editorial' => 'required',
             'edicion' => 'required',
             'fecha_publicacion' => 'required',
-            'disponible' => ''
+            'disponible' => '',
+            'portada' => ''
         ]);
         if ($request['disponible'] == 'on'){
             $request['disponible'] = 0;
@@ -90,16 +96,16 @@ class LibroController extends Controller {
             $request['disponible'] = 1;
         }
         $input = $request->all();
-        if ($image = $request->file('image')) {
+        if ($image = $request->file('portada')) {
             $imageDestinationPath = 'uploads/';
             $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($imageDestinationPath, $postImage);
-            $input['image'] = "$postImage";
+            $input['portada'] = "$postImage";
         } else {
-            unset($input['image']);
+            unset($input['portada']);
         }
         $libro->update($input);
-        return redirect()->route('libros.index')->with('success','Libro updated successfully');
+        return redirect()->route('libros.show',compact('libro'))->with('success','Libro actualizado con éxito.');
     }
     /**
      * Remove the specified resource from storage.

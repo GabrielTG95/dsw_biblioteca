@@ -1,50 +1,51 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
+            <div class="text-center">
                 <h2>Usuarios</h2>
+                @if(Auth::user()->rol == 0)
+                    <a href="{{route('users.create')}}"
+                       class="btn btn-success d-block w-25 ms-auto me-4">{{__('Añadir Usuario')}} <i
+                            class="fa fa-plus-square"></i></a>
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
+                @endif
             </div>
         </div>
     </div>
-    <a href="{{route('users.create')}}" class="btn btn-success">{{__('Añadir Usuario')}}</a>
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-
-    <table class="table table-bordered">
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Rol</th>
-            <th>Fecha de creación</th>
-        </tr>
+    <div class="row d-flex justify-content-around">
         @foreach ($records as $record)
-            <tr>
-                <td>{{ $record->id }}</td>
-                <td>{{ $record->name }}</td>
-                <td>{{ $record->email }}</td>
-                @if($record->rol == 0)
-                    <td>Administrador</td>
-                @else
-                    <td>Alumno</td>
-                @endif
-                <td>{{ $record->created_at }}</td>
-                <td>
-                    <a class="btn btn-sm btn-info d-block mb-1" href="{{ route('users.show',$record->id) }}">Ver Más</a>
-                    <a class="btn btn-sm btn-primary d-block mb-1" href="{{ route('users.edit',$record->id) }}">Editar</a>
-                    <form class="w-100" action="{{ route('users.destroy',$record->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger w-100 m-0">Eliminar</button>
-                    </form>
-                </td>
-            </tr>
+            <div class="col-lg-3 col-md-5 col-sm-7 col-10 mx-1 mb-4 p-2 shadow">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <img class="w-100" src="{{asset('uploads/').'/'.$record->imagen}}"
+                         alt="Imagen de perfil del usuario {{$record->name}}">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <p class="fs-5">{{ $record->name }}</p>
+                    <p class="fs-6">{{ $record->email }}</p>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-sm btn-info w-25 fs-5 mx-1 float-start"
+                       href="{{ route('users.show',$record->id) }}"><i class="fa fa-info"></i></a>
+                    @if(Auth::user()->rol == 0)
+                        <a class="btn btn-sm btn-primary w-25 fs-5 mx-1 float-start"
+                           href="{{ route('users.edit',$record->id) }}"><i class="fa fa-pencil"></i></a>
+                        <form class="w-25" action="{{ route('users.destroy',$record->id) }}" method="POST" onsubmit="return confirm('¿De verdad desea eliminar este libro?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger mx-1 w-100 fs-5"><i
+                                    class="fa fa-trash"></i></button>
+                        </form>
+                    @endif
+                </div>
+            </div>
         @endforeach
-    </table>
+    </div>
     {!! $records->links() !!}
 @endsection

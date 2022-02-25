@@ -12,7 +12,7 @@ class PrestamoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index()  {
-        $records = Prestamo::latest()->paginate(5);
+        $records = Prestamo::latest()->paginate(10);
         return view('prestamos.index', compact('records'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -22,9 +22,7 @@ class PrestamoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create()   {
-        //$users = User::where('name','like','usuario')->get();
         $users = User::get();
-        //dd($users);//Crea un punto de ruptura e imprime por pantalla la variable
         $libros = Libro::get();
         return view('prestamos.create',compact('users','libros'));
     }
@@ -81,14 +79,6 @@ class PrestamoController extends Controller {
             'fecha_devolucion' => ''
         ]);
         $input = $request->all();
-        /*if ($image = $request->file('image')) {
-            $imageDestinationPath = 'uploads/';
-            $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($imageDestinationPath, $postImage);
-            $input['image'] = "$postImage";
-        } else {
-            unset($input['image']);
-        }*/
         $prestamo->update($input);
         return redirect()->route('prestamos.index')->with('success','Prestamo updated successfully');
     }

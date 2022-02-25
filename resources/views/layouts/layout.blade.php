@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Biblioteca</title>
+    <!-- Fuente para añadir Font Awesome -->
+    <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <!-- Bootstrap core CSS -->
@@ -13,7 +15,7 @@
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark primary-color">
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">Biblioteca</a>
+    <a class="navbar-brand" href="{{url('/libros')}}">Biblioteca</a>
     <!-- Collapse button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
             aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,32 +26,32 @@
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ url('/libros') }}">Libros
+                <a class="nav-link" href="{{ url('/libros') }}"><i class="fa fa-book"></i> Libros
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
-            @if(Auth::user()->rol == 0)
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ url('/users') }}">Usuarios
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
+            @isset(Auth::user()->rol)
+                @if(Auth::user()->rol == 0)
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url('/users') }}"><i class="fa fa-users"></i> Usuarios
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url('/prestamos') }}"><i class="fa fa-bookmark"></i> Prestamos
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                @else
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url('/prestamos') }}"><i class="fa fa-bookmark"></i> Mis Prestamos
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
             @endif
-            @if(Auth::user()->rol == 0)
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('/prestamos') }}">Prestamos
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-            @else
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ url('/prestamos') }}">Mis Prestamos
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
-            @endif
-            <!-- Dropdown -->
-            <!--<li class="nav-item dropdown">
+        @endisset
+        <!-- Dropdown -->
+        <!--<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">Post</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
@@ -64,11 +66,11 @@
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
-                <p class="d-inline">{{Auth::user()->name}}</p>
-                <a href="{{ url('/home') }}" class="text-sm text-white underline">Mi Perfil</a>
+                <a href="{{ url('/home') }}" class="text-sm text-white underline"><i class="fa fa-user-circle"></i> Mi
+                    Perfil</a>
             @else
                 <a href="{{ route('login') }}" class="text-sm text-white underline">Iniciar Sesión</a>
-
+            |
                 @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="text-sm text-white underline">Registrarme</a>
                 @endif

@@ -9,7 +9,7 @@ class UserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index()  {
-        $records = User::latest()->paginate(5);
+        $records = User::latest()->paginate(10);
         return view('users.index', compact('records'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -31,18 +31,19 @@ class UserController extends Controller {
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
-            'rol' => 'required'
+            'imagen' => 'required',
+            'rol' => 'required',
+            'password' => 'required'
         ]);
         $input = $request->all();
-        /*if ($image = $request->file('image')) {
+        if ($image = $request->file('imagen')) {
             $imageDestinationPath = 'uploads/';
             $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($imageDestinationPath, $postImage);
-            $input['image'] = "$postImage";
-        }*/
+            $input['imagen'] = "$postImage";
+        }
         User::create($input);
-        return redirect()->route('users.index')->with('success','User created successfully.');
+        return redirect()->route('users.index')->with('success','Usuario creado con éxito.');
     }
     /**
      * Display the specified resource.
@@ -73,7 +74,8 @@ class UserController extends Controller {
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'rol' => 'required'
+            'rol' => 'required',
+            'imagen' => ''
         ]);
         if ($request['disponible'] == 'on'){
             $request['disponible'] = 0;
@@ -81,16 +83,14 @@ class UserController extends Controller {
             $request['disponible'] = 1;
         }
         $input = $request->all();
-        /*if ($image = $request->file('image')) {
+        if ($image = $request->file('imagen')) {
             $imageDestinationPath = 'uploads/';
             $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($imageDestinationPath, $postImage);
-            $input['image'] = "$postImage";
-        } else {
-            unset($input['image']);
-        }*/
+            $input['imagen'] = "$postImage";
+        }
         $user->update($input);
-        return redirect()->route('users.index')->with('success','User updated successfully');
+        return redirect()->route('users.show',compact('user'))->with('success','Usuario actualizado con éxito.');
     }
     /**
      * Remove the specified resource from storage.
@@ -101,6 +101,6 @@ class UserController extends Controller {
     public function destroy(User $user) {
         $user->delete();
         return redirect()->route('users.index')
-            ->with('success','User deleted successfully');
+            ->with('success','Usuario eliminado con éxito');
     }
 }
