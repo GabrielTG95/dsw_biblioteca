@@ -35,11 +35,19 @@
                 </a>
             </li>
             @endif
+            @if(Auth::user()->rol == 0)
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url('/prestamos') }}">Prestamos
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+            @else
             <li class="nav-item active">
-                <a class="nav-link" href="{{ url('/prestamos') }}">Prestamos
+                <a class="nav-link" href="{{ url('/prestamos') }}">Mis Prestamos
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
+            @endif
             <!-- Dropdown -->
             <!--<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
@@ -56,12 +64,13 @@
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
-                <a href="{{ url('/home') }}" class="text-sm text-white underline">Home</a>
+                <p class="d-inline">{{Auth::user()->name}}</p>
+                <a href="{{ url('/home') }}" class="text-sm text-white underline">Mi Perfil</a>
             @else
-                <a href="{{ route('login') }}" class="text-sm text-white underline">Log in</a>
+                <a href="{{ route('login') }}" class="text-sm text-white underline">Iniciar Sesión</a>
 
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="text-sm text-white underline"> | Register</a>
+                    <a href="{{ route('register') }}" class="text-sm text-white underline">Registrarme</a>
                 @endif
             @endauth
         </div>

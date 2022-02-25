@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Panel de control') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Bienvenido ') }}{{Auth::user()->name}}
+                        <a class="btn btn-info d-block w-25" href="{{ url('/libros') }}">Ir a la biblioteca</a>
                 </div>
             </div>
         </div>

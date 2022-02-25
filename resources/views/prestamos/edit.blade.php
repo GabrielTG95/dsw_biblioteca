@@ -32,20 +32,24 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Usuario:</strong>
-                    <input type="text" name="title" value="{{ $prestamo->usuario }}" class="form-control"
+                    <input type="text" name="usuario" value="{{ $prestamo->usuario }}" class="form-control"
                            placeholder="Usuario">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Fecha del prestamo:</strong>
-                    <input type="date" name="title" value="{{ $prestamo->fecha_prestamo }}" class="form-control">
+                    <input type="datetime-local" name="fecha_prestamo" value="{{ date('Y-m-d\TH:i', strtotime($prestamo->fecha_prestamo)) }}" class="form-control">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Fecha de devolución:</strong>
-                    <input type="date" name="title" value="{{ $prestamo->fecha_devolucion }}" class="form-control">
+                    @if($prestamo->fecha_devolucion != null)
+                        <input type="datetime-local" name="fecha_devolucion" value="{{ date('Y-m-d\TH:i', strtotime($prestamo->fecha_devolucion)) }}" class="form-control">
+                    @else
+                        <input type="datetime-local" name="fecha_devolucion" value="" class="form-control">
+                    @endif
                 </div>
             </div>
 

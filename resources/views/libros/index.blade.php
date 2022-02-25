@@ -8,13 +8,14 @@
             </div>
         </div>
     </div>
-    <a href="{{route('libros.create')}}" class="btn btn-success">{{__('Añadir Libro')}}</a>
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
+    @if(Auth::user()->rol == 0)
+        <a href="{{route('libros.create')}}" class="btn btn-success">{{__('Añadir Libro')}}</a>
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
     @endif
-
     <table class="table table-bordered">
         <tr>
             <th>ISBN</th>
@@ -41,13 +42,15 @@
                     <td>No Disponible</td>
                 @endif
                 <td>
-                    <a class="btn btn-sm btn-info" href="{{ route('libros.show',$record->id) }}">Show</a>
-                    <a class="btn btn-sm btn-primary" href="{{ route('libros.edit',$record->id) }}">Edit</a>
+                    <a class="btn btn-sm btn-info" href="{{ route('libros.show',$record->id) }}">Mostrar</a>
+                    @if(Auth::user()->rol == 0)
+                    <a class="btn btn-sm btn-primary" href="{{ route('libros.edit',$record->id) }}">Editar</a>
                     <form action="{{ route('libros.destroy',$record->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                     </form>
+                    @endif
                 </td>
             </tr>
         @endforeach

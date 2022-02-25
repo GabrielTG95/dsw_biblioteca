@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Prestamo;
+use Carbon\Carbon;
 class PrestamoController extends Controller {
     /**
      * Display a listing of the resource.
@@ -69,7 +70,6 @@ class PrestamoController extends Controller {
      */
     public function update(Request $request, Prestamo $prestamo) {
         $request->validate([
-            'libro_id' => 'required|min:3|max:255',
             'usuario' => 'required',
             'fecha_prestamo' => 'required',
             'fecha_devolucion' => 'required'
