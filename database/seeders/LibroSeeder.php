@@ -17,7 +17,7 @@ class LibroSeeder extends Seeder
     {
         Libro::insert([
             'isbn' => '978-84-9043-931-9',
-            'titulo' => 'Guardianes de La Ciudadela - El Bestiario de Axlin',
+            'titulo' => 'Guardianes de La Ciudadela - El Bestiario de Axlin'.' | Ejemplar 1',
             'autor' => 'Laura Gallego',
             'categoria' => 1,
             'editorial' => 'Montena',
@@ -36,7 +36,7 @@ class LibroSeeder extends Seeder
         ]);
         Libro::insert([
             'isbn' => '978-84-17347-62-8',
-            'titulo' => 'Dune',
+            'titulo' => 'Dune'.' | Ejemplar 1',
             'autor' => 'Frank Herbert',
             'categoria' => 4,
             'editorial' => 'Nova',
@@ -55,7 +55,7 @@ class LibroSeeder extends Seeder
         ]);
         Libro::insert([
             'isbn' => '978-84-18002-50-2',
-            'titulo' => 'Asedio y Tormenta - GrishaVerse',
+            'titulo' => 'Asedio y Tormenta - GrishaVerse'.' | Ejemplar 1',
             'autor' => 'Leigh Bardugo',
             'categoria' => 5,
             'editorial' => 'Hidra',
@@ -74,14 +74,14 @@ class LibroSeeder extends Seeder
         ]);
         Libro::insert([
             'isbn' => '978-84-18037-21-4',
-            'titulo' => 'El Imperio Final - Edición Ilustrada',
+            'titulo' => 'El Imperio Final - Edición Ilustrada'.' | Ejemplar 1',
             'autor' => 'Brando Sanderson',
             'categoria' => 1,
             'editorial' => 'Nova',
             'edicion' => 1,
             'fecha_publicacion' => 2021,
             'portada' => 'elImperioFinalIlustrada.jpg',
-            'disponible' => 0,
+            'disponible' => 1,
             'link' => 'https://es.lipsum.com/',
             'sinopsis' =>
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ullamcorper auctor mi.
@@ -93,14 +93,14 @@ class LibroSeeder extends Seeder
         ]);
         Libro::insert([
             'isbn' => '978-84-8441-485-8',
-            'titulo' => 'Las Increíbles Aventuras de Tom Scatterhorn',
+            'titulo' => 'Las Increíbles Aventuras de Tom Scatterhorn'.' | Ejemplar 1',
             'autor' => 'Henry Chancellor',
             'categoria' => 6,
             'editorial' => 'Montena',
             'edicion' => 1,
             'fecha_publicacion' => 2008,
             'portada' => 'tomScatterhorn.jpg',
-            'disponible' => 0,
+            'disponible' => 1,
             'link' => 'https://es.lipsum.com/',
             'sinopsis' =>
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ullamcorper auctor mi.
@@ -112,7 +112,7 @@ class LibroSeeder extends Seeder
         ]);
         Libro::insert([
             'isbn' => '978-84-08-08380-1',
-            'titulo' => 'Cazadores de Sombras 1 - Ciudad de Hueso',
+            'titulo' => 'Cazadores de Sombras 1 - Ciudad de Hueso'.' | Ejemplar 1',
             'autor' => 'Cassandra Clare',
             'categoria' => 3,
             'editorial' => 'Destino',
@@ -131,7 +131,7 @@ class LibroSeeder extends Seeder
         ]);
         Libro::insert([
             'isbn' => '978-84-672-3978-2',
-            'titulo' => 'La torre de la golondrina',
+            'titulo' => 'La torre de la golondrina'.' | Ejemplar 1',
             'autor' => 'Adrej Sapkowski',
             'categoria' => 1,
             'editorial' => 'Cículo de Lectores',
@@ -150,7 +150,7 @@ class LibroSeeder extends Seeder
         ]);
         Libro::insert([
             'isbn' => '978-84-679-2509-8',
-            'titulo' => 'Pokémon Rubí y Zafiro Vol. 2',
+            'titulo' => 'Pokémon Rubí y Zafiro Vol. 2'.' | Ejemplar 1',
             'autor' => 'Hidenori Kusaka, Satoshi Yamamoto',
             'categoria' => 2,
             'editorial' => 'Norma Editorial',
@@ -167,10 +167,9 @@ class LibroSeeder extends Seeder
                     nunc ac nisl ullamcorper, non placerat velit consectetur. Sed mattis mollis tempor. Aliquam erat
                      volutpat.',
         ]);
-        //Ejemplares sin estar en prestamo
         Libro::insert([
             'isbn' => '978-84-9043-931-9',
-            'titulo' => 'Guardianes de La Ciudadela - El Bestiario de Axlin',
+            'titulo' => 'Guardianes de La Ciudadela - El Bestiario de Axlin'.' | Ejemplar 2',
             'autor' => 'Laura Gallego',
             'categoria' => 1,
             'editorial' => 'Montena',
@@ -189,7 +188,7 @@ class LibroSeeder extends Seeder
         ]);
         Libro::insert([
             'isbn' => '978-84-17347-62-8',
-            'titulo' => 'Dune',
+            'titulo' => 'Dune'.' | Ejemplar 2',
             'autor' => 'Frank Herbert',
             'categoria' => 4,
             'editorial' => 'Nova',
@@ -208,7 +207,7 @@ class LibroSeeder extends Seeder
         ]);
         Libro::insert([
             'isbn' => '978-84-18002-50-2',
-            'titulo' => 'Asedio y Tormenta - GrishaVerse',
+            'titulo' => 'Asedio y Tormenta - GrishaVerse'.' | Ejemplar 2',
             'autor' => 'Leigh Bardugo',
             'categoria' => 5,
             'editorial' => 'Hidra',
@@ -227,7 +226,7 @@ class LibroSeeder extends Seeder
         ]);
         Libro::insert([
             'isbn' => '978-84-18037-21-4',
-            'titulo' => 'El Imperio Final - Edición Ilustrada',
+            'titulo' => 'El Imperio Final - Edición Ilustrada'.' | Ejemplar 2',
             'autor' => 'Brando Sanderson',
             'categoria' => 1,
             'editorial' => 'Nova',
@@ -246,7 +245,7 @@ class LibroSeeder extends Seeder
         ]);
         Libro::insert([
             'isbn' => '978-84-8441-485-8',
-            'titulo' => 'Las Increíbles Aventuras de Tom Scatterhorn',
+            'titulo' => 'Las Increíbles Aventuras de Tom Scatterhorn'.' | Ejemplar 2',
             'autor' => 'Henry Chancellor',
             'categoria' => 6,
             'editorial' => 'Montena',
@@ -265,7 +264,7 @@ class LibroSeeder extends Seeder
         ]);
         Libro::insert([
             'isbn' => '978-84-08-08380-1',
-            'titulo' => 'Cazadores de Sombras 1 - Ciudad de Hueso',
+            'titulo' => 'Cazadores de Sombras 1 - Ciudad de Hueso'.' | Ejemplar 2',
             'autor' => 'Cassandra Clare',
             'categoria' => 3,
             'editorial' => 'Destino',
@@ -284,7 +283,7 @@ class LibroSeeder extends Seeder
         ]);
         Libro::insert([
             'isbn' => '978-84-672-3978-2',
-            'titulo' => 'La torre de la golondrina',
+            'titulo' => 'La torre de la golondrina'.' | Ejemplar 2',
             'autor' => 'Adrej Sapkowski',
             'categoria' => 1,
             'editorial' => 'Cículo de Lectores',
@@ -303,7 +302,7 @@ class LibroSeeder extends Seeder
         ]);
         Libro::insert([
             'isbn' => '978-84-679-2509-8',
-            'titulo' => 'Pokémon Rubí y Zafiro Vol. 2',
+            'titulo' => 'Pokémon Rubí y Zafiro Vol. 2'.' | Ejemplar 2',
             'autor' => 'Hidenori Kusaka, Satoshi Yamamoto',
             'categoria' => 2,
             'editorial' => 'Norma Editorial',

@@ -12,7 +12,7 @@ class PrestamoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index()  {
-        $records = Prestamo::latest()->paginate(10);
+        $records = Prestamo::orderBy('fecha_prestamo', 'asc')->paginate(10);
         $users = User::get();
         $libros = Libro::get();
         return view('prestamos.index', compact('records','users', 'libros'))
