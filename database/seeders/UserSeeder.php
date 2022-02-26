@@ -54,7 +54,8 @@ class UserSeeder extends Seeder
             'email' => 'alumno2@gmail.com',
             'password' => Hash::make('1234'),
             'imagen' => 'alumno.png',
-            'rol' => 1
+            'rol' => 1,
+            'sancion' => '2020-02-20'
         ]);
 
         User::insert([

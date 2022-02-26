@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Prestamo;
+use Carbon\Carbon;
 
 $prestamosTotales = Prestamo::where('usuario', '=', $user->id)->count();
 ?>
@@ -75,44 +76,66 @@ $prestamosTotales = Prestamo::where('usuario', '=', $user->id)->count();
         @if($prestamosTotales <= 0)
             <h3 class="text-center" colspan="4">Este usuario no ha realizado ningún alquiler.</h3>
         @else
-        <table class="table table-bordered">
-            <tr>
-                <th>Libro</th>
-                <th>Fecha del prestamo</th>
-                <th>Fecha de devolución</th>
-                <th>Opciones</th>
-            </tr>
-            @foreach ($prestamos as $prestamo)
-                @if($prestamo->usuario == $user->id)
-                    <tr>
-                        @foreach($libros as $libro)
-                            @if($prestamo->libro_id == $libro->id)
-                                <td>{{ $libro->titulo }}</td>
+            <div class="d-flex justify-content-start flex-wrap">
+                <p class="bg-warning p-1 rounded"><i class="fa fa-clock-o"></i> Pendiente de entrega</p>
+                <p class="bg-info p-1 rounded mx-2"><i class="fa fa-exclamation"></i> Entrega atrasada</p>
+                <p class="bg-success p-1 rounded mx-2"><i class="fa fa-check"></i> Entrega a tiempo</p>
+                <p class="bg-danger p-1 rounded"><i class="fa fa-calendar-times-o"></i> Pendiente fuera de tiempo</p>
+            </div>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Estado</th>
+                    <th>Libro</th>
+                    <th>Fecha del prestamo</th>
+                    <th>Fecha de devolución</th>
+                    <th>Opciones</th>
+                </tr>
+                @foreach ($prestamos as $prestamo)
+                    @if($prestamo->usuario == $user->id)
+                        <tr>
+                            @if($prestamo->fecha_devolucion == null)
+                                @if(Carbon::parse($prestamo->fecha_prestamo)->diffInDays(Carbon::now()) > 6)
+                                    <td class="bg-danger text-center"><i
+                                            class="fa fa-calendar-times-o fs-5 fw-bold"></i></td>
+                                @else
+                                    <td class="bg-warning text-center"><i class="fa fa-clock-o fs-5 fw-bold"></i></td>
+                                @endif
+                            @else
+                                @if(Carbon::parse($prestamo->fecha_prestamo)->diffInDays(Carbon::parse($prestamo->fecha_devolucion)) > 6)
+                                    <td class="bg-info text-center"><i class="fa fa-exclamation fs-5 fw-bold"></i></td>
+                                @else
+                                    <td class="bg-success text-center"><i class="fa fa-check fs-5 fw-bold"></i></td>
+                                @endif
                             @endif
-                        @endforeach
-                        <td>{{ $prestamo->fecha_prestamo }}</td>
-                        @if($prestamo->fecha_devolucion == null)
-                            <td>Aún no se ha devuelto</td>
-                        @else
-                            <td>{{ $prestamo->fecha_devolucion }}</td>
-                        @endif
-                        <td class="d-flex justify-content-around">
-                            <a class="btn btn-sm btn-info w-25 fs-6" href="{{ route('prestamos.show',$prestamo->id) }}"><i
-                                    class="fa fa-info"></i></a>
-                            <a class="btn btn-sm btn-primary w-25 fs-6"
-                               href="{{ route('prestamos.edit',$prestamo->id) }}"><i class="fa fa-pencil"></i></a>
-                            <form class="w-25 m-0" action="{{ route('prestamos.destroy',$prestamo->id) }}"
-                                  method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger w-100 m-0 fs-6"><i
-                                        class="fa fa-trash"></i></button>
-                            </form>
-                        </td>
-                    </tr>
-                @endif
-            @endforeach
-        </table>
-            @endif
+                            @foreach($libros as $libro)
+                                @if($prestamo->libro_id == $libro->id)
+                                    <td>{{ $libro->titulo }}</td>
+                                @endif
+                            @endforeach
+                            <td>{{ $prestamo->fecha_prestamo }}</td>
+                            @if($prestamo->fecha_devolucion == null)
+                                <td>Aún no se ha devuelto</td>
+                            @else
+                                <td>{{ $prestamo->fecha_devolucion }}</td>
+                            @endif
+                            <td class="d-flex justify-content-around">
+                                <a class="btn btn-sm btn-info w-25 fs-6"
+                                   href="{{ route('prestamos.show',$prestamo->id) }}"><i
+                                        class="fa fa-info"></i></a>
+                                <a class="btn btn-sm btn-primary w-25 fs-6"
+                                   href="{{ route('prestamos.edit',$prestamo->id) }}"><i class="fa fa-pencil"></i></a>
+                                <form class="w-25 m-0" action="{{ route('prestamos.destroy',$prestamo->id) }}"
+                                      method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger w-100 m-0 fs-6"><i
+                                            class="fa fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endif
+                @endforeach
+            </table>
+        @endif
     </div>
 @endsection

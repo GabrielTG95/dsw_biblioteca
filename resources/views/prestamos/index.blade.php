@@ -38,7 +38,7 @@ use Carbon\Carbon;
         <p class="bg-warning p-1 rounded"><i class="fa fa-clock-o"></i> Pendiente de entrega</p>
         <p class="bg-info p-1 rounded mx-2"><i class="fa fa-exclamation"></i> Entrega atrasada</p>
         <p class="bg-success p-1 rounded mx-2"><i class="fa fa-check"></i> Entrega a tiempo</p>
-        <p class="bg-danger p-1 rounded"><i class="fa fa-calendar-times-o"></i> Pendiente de entrega fuera de tiempo</p>
+        <p class="bg-danger p-1 rounded"><i class="fa fa-calendar-times-o"></i> Pendiente fuera de tiempo</p>
     </div>
     <table class="table table-bordered">
         <tr>
