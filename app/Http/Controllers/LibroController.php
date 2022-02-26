@@ -39,7 +39,8 @@ class LibroController extends Controller {
             'editorial' => 'required',
             'edicion' => 'required',
             'fecha_publicacion' => 'required',
-            'portada' => 'required'
+            'portada' => 'required',
+            'link' => ''
         ]);
         $input = $request->all();
         if ($image = $request->file('portada')) {
@@ -88,7 +89,8 @@ class LibroController extends Controller {
             'edicion' => 'required',
             'fecha_publicacion' => 'required',
             'disponible' => '',
-            'portada' => ''
+            'portada' => '',
+            'link' => ''
         ]);
         if ($request['disponible'] == 'on'){
             $request['disponible'] = 0;

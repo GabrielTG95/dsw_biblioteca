@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('imagen');
             $table->boolean('rol')->default(1);//0=admin,1=alumno
+            $table->date('sancion')->nullable();
             $table->rememberToken();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

@@ -24,11 +24,13 @@
         @foreach ($records as $record)
             <div class="col-lg-3 col-md-5 col-sm-7 col-10 mx-1 mb-4 p-2 shadow">
                 <p class="text-end pe-3">
-                    @if($record->disponible == 0)
-                        <i class="fa fa-check"></i> Disponible
-                    @else
-                        <i class="fa fa-clock-o"></i> Esperando devolución
-                    @endif
+                    @isset(Auth::user()->rol)
+                        @if($record->disponible == 0)
+                            <i class="fa fa-check"></i> Disponible
+                        @else
+                            <i class="fa fa-clock-o"></i> Esperando devolución
+                        @endif
+                    @endisset
                 </p>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <img class="w-100" src="{{asset('uploads/').'/'.$record->portada}}"

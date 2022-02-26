@@ -35,7 +35,7 @@ class LibroSeeder extends Seeder
                 'editorial' => 'Nova',
                 'edicion' => 3,
                 'fecha_publicacion' => 2019,
-                'portada' => 'dune.png',
+                'portada' => 'dune.jpg',
                 'disponible' => 0,
             ]);
             /*Libro::insert([

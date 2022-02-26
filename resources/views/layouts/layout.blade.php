@@ -13,7 +13,7 @@
 </head>
 <body>
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+<nav class="navbar navbar-expand-lg navbar-dark info-color">
     <!-- Navbar brand -->
     <a class="navbar-brand" href="{{url('/libros')}}">Biblioteca</a>
     <!-- Collapse button -->
@@ -50,15 +50,6 @@
                     </li>
             @endif
         @endisset
-        <!-- Dropdown -->
-        <!--<li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Post</a>
-                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{ url('/posts') }}">List All</a>
-                    <a class="dropdown-item" href="{{ url('/posts/create') }}">Add New</a>
-                </div>
-            </li>-->
         </ul>
         <!-- Links -->
     </div>

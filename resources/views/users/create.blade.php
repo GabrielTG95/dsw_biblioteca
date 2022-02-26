@@ -11,7 +11,7 @@
 
     @if ($errors->any())
         <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <strong>¡Oh-oh!</strong> Ha surgido algún problema.<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -25,11 +25,11 @@
         <div class="row shadow w-75 mx-auto p-2">
             <div class="col-md-6 col">
                 <div class="form-group">
-                    <strong>Nombre:</strong>
+                    <strong>Nombre: <span class="text-danger">*</span></strong>
                     <input type="text" name="name" class="form-control" placeholder="Nombre" value="{{ old('name') }}">
                 </div>
                 <div class="form-group">
-                    <strong>Email:</strong>
+                    <strong>Email: <span class="text-danger">*</span></strong>
                     <input type="email" name="email" class="form-control" placeholder="email@gmail.com"
                            value="{{ old('email') }}">
                 </div>
@@ -37,11 +37,11 @@
 
             <div class="col-md-6 col">
                 <div class="form-group">
-                    <strong>Contraseña:</strong>
+                    <strong>Contraseña: <span class="text-danger">*</span></strong>
                     <input type="password" name="password" class="form-control" value="">
                 </div>
                 <div class="form-group">
-                    <strong>Rol:</strong>
+                    <strong>Rol: <span class="text-danger">*</span></strong>
                     <select class="form-select" name="rol" id="rol">
                         <option value="0">Administrador</option>
                         <option value="1">Alumno</option>
@@ -51,10 +51,11 @@
 
             <div>
                 <div class="form-group">
-                    <strong>Imagen:</strong>
+                    <strong>Imagen: <span class="text-danger">*</span></strong>
                     <input type="file" name="imagen" class="form-control" placeholder="Post Image">
                 </div>
             </div>
+            <p class="fw-bold text-danger mx-2">* Los campos con este símbolo són obligatorios</p>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Añadir</button>
             </div>

@@ -41,7 +41,11 @@
             </div>
             <div class="form-group">
                 <strong>Categoría:</strong>
-                {{ $libro->categoria }}
+                @foreach($categorias as $categoria)
+                    @if($categoria->id == $libro->categoria)
+                        {{$categoria->definicion}}
+                    @endif
+                @endforeach
             </div>
             <div class="form-group">
                 <strong>Editorial:</strong>
@@ -55,14 +59,16 @@
                 <strong>Fecha de publicación:</strong>
                 {{ $libro->fecha_publicacion }}
             </div>
-            <div class="form-group">
-                <strong>Disponibilidad:</strong>
-                @if($libro->disponible == 0)
-                    Disponible
-                @else
-                    No Disponible
-                @endif
-            </div>
+            @isset(Auth::user()->rol)
+                <div class="form-group">
+                    <strong>Disponibilidad:</strong>
+                    @if($libro->disponible == 0)
+                        Disponible
+                    @else
+                        No Disponible
+                    @endif
+                </div>
+            @endisset
 
             <div class="d-flex justify-content-center">
                 @isset(Auth::user()->rol)

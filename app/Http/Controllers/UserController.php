@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Prestamo;
+use App\Models\Libro;
 class UserController extends Controller {
     /**
      * Display a listing of the resource.
@@ -52,7 +54,9 @@ class UserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show(User $user) {
-        return view('users.show',compact('user'));
+        $prestamos = Prestamo::get();
+        $libros = Libro::get();
+        return view('users.show',compact('user','prestamos','libros'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -77,11 +81,6 @@ class UserController extends Controller {
             'rol' => 'required',
             'imagen' => ''
         ]);
-        if ($request['disponible'] == 'on'){
-            $request['disponible'] = 0;
-        }else{
-            $request['disponible'] = 1;
-        }
         $input = $request->all();
         if ($image = $request->file('imagen')) {
             $imageDestinationPath = 'uploads/';

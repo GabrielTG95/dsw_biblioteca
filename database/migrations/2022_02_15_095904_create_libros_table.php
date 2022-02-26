@@ -24,6 +24,7 @@ return new class extends Migration
             $table->year('fecha_publicacion');
             $table->string('portada')->nullable();
             $table->boolean('disponible')->default(0);
+            $table->string('link')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
