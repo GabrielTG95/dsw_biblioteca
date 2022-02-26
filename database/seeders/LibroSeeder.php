@@ -26,6 +26,14 @@ class LibroSeeder extends Seeder
                 'fecha_publicacion' => 2018,
                 'portada' => 'elbestiariodeaxlin.jpg',
                 'disponible' => 0,
+                'link' => 'https://es.lipsum.com/',
+                'sinopsis' =>
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ullamcorper auctor mi.
+                     Pellentesque id nisi vitae lorem volutpat auctor a non nibh. Sed ut luctus nulla, sed gravida
+                      mauris. Donec vel magna lorem. Etiam sit amet diam rutrum, pellentesque sem ac, venenatis massa.
+                       Duis vestibulum fringilla dapibus. Maecenas pretium eros eu dignissim condimentum. Proin viverra
+                        nunc ac nisl ullamcorper, non placerat velit consectetur. Sed mattis mollis tempor. Aliquam erat
+                         volutpat.',
             ]);
             Libro::insert([
                 'isbn' => '978-84-17347-62-8',
@@ -37,6 +45,14 @@ class LibroSeeder extends Seeder
                 'fecha_publicacion' => 2019,
                 'portada' => 'dune.jpg',
                 'disponible' => 0,
+                'link' => 'https://es.lipsum.com/',
+                'sinopsis' =>
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ullamcorper auctor mi.
+                     Pellentesque id nisi vitae lorem volutpat auctor a non nibh. Sed ut luctus nulla, sed gravida
+                      mauris. Donec vel magna lorem. Etiam sit amet diam rutrum, pellentesque sem ac, venenatis massa.
+                       Duis vestibulum fringilla dapibus. Maecenas pretium eros eu dignissim condimentum. Proin viverra
+                        nunc ac nisl ullamcorper, non placerat velit consectetur. Sed mattis mollis tempor. Aliquam erat
+                         volutpat.',
             ]);
             /*Libro::insert([
                 'isbn' => '978-84-18002-50-2',

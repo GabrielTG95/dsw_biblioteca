@@ -69,7 +69,16 @@
                     @endif
                 </div>
             @endisset
-
+            <div class="form-group">
+                <strong>Sinposis:</strong>
+                {{ $libro->sinopsis }}
+            </div>
+            @if($libro->link != null)
+                <div class="form-group">
+                    <strong>Enlace:</strong>
+                    <a href="{{ $libro->link }}" target="_blank" title="Enlace al documento">{{ $libro->link }}</a>
+                </div>
+            @endif
             <div class="d-flex justify-content-center">
                 @isset(Auth::user()->rol)
                     @if(Auth::user()->rol == 0)
