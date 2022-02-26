@@ -1,40 +1,5 @@
-composer require laravel/ui
-composer install
-php artisan ui bootstrap --auth
-npm install
-npm run dev
-
-
-Migración organizada debido a que migra por orden de creación y esto genera error:
-
-
-php artisan migrate --path=/database/migrations/2022_02_15_095849_create_roles_table.php
-php artisan migrate --path=/database/migrations/2022_02_15_095928_create_ejemplares_table.php
-
-El comando dump-autoload actualiza la información del cargador automático de clases:
-
-composer dump-autoload
-
-php artisan make:migration create_categorias_table --create=categorias
-
-php artisan migrate
-php artisan migrate --path=/database/migrations/2022_02_15_095904_create_libros_table.php
-php artisan migrate --path=/database/migrations/2022_02_15_094138_create_usuarios_table.php
-php artisan migrate --path=/database/migrations/2022_02_15_095953_create_prestamos_table.php
-php artisan migrate --path=/database/migrations/2022_02_25_021918_create_categorias_table.php
-php artisan migrate:refresh
-
-php artisan make:seeder UserSeeder
-
-php artisan db:seed
-php artisan db:seed --class=LibroSeeder
-php artisan db:seed --class=UserSeeder
-php artisan db:seed --class=CategoriaSeeder
-php artisan migrate:refresh --seed
-
-
-
 php artisan migrate:refresh
 php artisan db:seed --class=LibroSeeder
 php artisan db:seed --class=UserSeeder
 php artisan db:seed --class=CategoriaSeeder
+php artisan db:seed --class=PrestamoSeeder
