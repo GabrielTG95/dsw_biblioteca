@@ -12,7 +12,7 @@ class PrestamoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index()  {
-        $records = Prestamo::orderBy('fecha_prestamo', 'asc')->paginate(10);
+        $records = Prestamo::orderBy('fecha_prestamo', 'desc')->paginate(10);
         $users = User::get();
         $libros = Libro::get();
         return view('prestamos.index', compact('records','users', 'libros'))
@@ -130,6 +130,7 @@ class PrestamoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy(Prestamo $prestamo) {
+
         $prestamo->delete();
         return redirect()->route('prestamos.index')
             ->with('success','Prestamo deleted successfully');
